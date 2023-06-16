@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exemplo de javascript</title>
+ <script>
+function saudacao(nome) {
+   console.log("Olá, " + nome + "!");
+}
+
+saudacao("Maria");
+ </script>
+</head>
+<body>
+ 
+</body>
+</html>
