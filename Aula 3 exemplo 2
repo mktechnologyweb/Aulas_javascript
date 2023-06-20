@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exemplo de Modelo de Caixa CSS</title>
+ <script>
+var idade = 20;
+var status = (idade >= 18) ? "Maior de idade" : "Menor de idade";
+
+console.log(status);
+
+
+ </script>
+</head>
+<body>
+ 
+</body>
+</html>
