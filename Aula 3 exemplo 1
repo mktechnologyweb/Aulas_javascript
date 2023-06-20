@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exemplo de Modelo de Caixa CSS</title>
+ <script>
+  var frutas = ["maçã", "banana", "laranja"];
+
+console.log(frutas[0]); // Acessando o primeiro elemento
+console.log(frutas.length); // Obtendo o tamanho do array
+
+ </script>
+</head>
+<body>
+ 
+</body>
+</html>
