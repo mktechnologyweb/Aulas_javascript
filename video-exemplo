@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exemplo de Acumulação de Pontos</title>
+  <style>
+    body {
+      background: #0d8aa5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .loading {
+      display:flex;
+      position: relative;
+      background: #fff;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      border: 10px solid #19bee1;
+    }
+
+    .loading.initialized {
+      display: block;
+    }
+
+    .loading.initialized:after {
+      content: '';
+      background: transparent;
+      width: 140%;
+      height: 140%;
+      position: absolute;
+      border-radius: 100%;
+      top: -20%;
+      left: -20%;
+      opacity: 0.7;
+      box-shadow: rgba(255, 255, 255, 0.6) -4px -5px 3px -3px;
+      animation: rotate 2s infinite linear;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotateZ(0deg);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+
+    #pontuacao {
+      display: none;
+      margin-top: 20px;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #pontuacao.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading"></div>
+
+  <div id="pontuacao">Ganhou: 0</div>
+
+  <video id="myVideo" width="640" height="360" controls>
+    <source src="javascript.mp4" type="video/mp4">
+  </video>
+
+  <script>
+    // Obtém o elemento do vídeo, o elemento de loading e a pontuação
+    const video = document.getElementById('myVideo');
+    const loading = document.querySelector('.loading');
+    const pontuacao = document.getElementById('pontuacao');
+
+    // Define a pontuação inicial como 0
+    let pontos = 0;
+
+    // Função para atualizar a pontuação
+    function atualizarPontuacao() {
+      pontuacao.textContent = 'Ganhou: ' + pontos;
+    }
+
+    // Função para acumular pontos
+    function acumularPontos() {
+      pontos++;
+      atualizarPontuacao();
+    }
+
+    // Evento executado quando o vídeo é iniciado
+    video.addEventListener('play', function() {
+      loading.classList.add('initialized');
+      pontuacao.classList.add('visible');
+      setInterval(acumularPontos, 1000);
+    });
+
+    // Evento executado quando o vídeo é pausado ou
+     interrompido
+    video.addEventListener('pause', function() {
+      loading.classList.remove('initialized');
+      pontuacao.classList.remove('visible');
+      clearInterval(acumularPontos);
+    });
+  </script>
+</body>
+</html>
